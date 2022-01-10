@@ -82,53 +82,127 @@ const Admin = () => {
       </ParallaxBG>
 
       <div className="container">
-      <div className="input-group my-3">
-              <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="form-control"
-                placeholder="Search by Jobs ..."
-                aria-label="Recipient's name"
-                aria-describedby="basic-addon2"
-              />
-              <div className="input-group-append">
-                <button className="btn btn-outline-secondary" type="button">
-                  Search
-                </button>
-              </div>
-            </div>
+        <div className="input-group my-3">
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="form-control"
+            placeholder="Search by Jobs ..."
+            aria-label="Recipient's name"
+            aria-describedby="basic-addon2"
+          />
+          <div className="input-group-append">
+            <button className="btn btn-outline-secondary" type="button">
+              Search
+            </button>
+          </div>
+        </div>
         <div className="row py-4">
           <div className="col-md-12">
             {posts &&
-              posts.filter((post)=>post.title.toLowerCase().includes(search.toLowerCase())).map((post, i) => (
-                <div className="card mb-3" key={post._id}>
-                  <div className="row g-0">
-                    <div className="card-header ">
-                      {/* <Avatar size={40} src={imageSource(post.postedBy)} /> */}
-                      <span className="py-2 mx-1">{post.postedBy.name}</span>
-                      <span className="py-2 mx-1 text-muted">
-                        {moment(post.createdAt).fromNow()}
-                      </span>
-                    </div>
+              posts
+                .filter((post) =>
+                  post.title.toLowerCase().includes(search.toLowerCase())
+                )
+                .map((post, i) => (
+                  <div className="card mb-3" key={post._id}>
+                    <div className="row g-0">
+                      <div className="card-header ">
+                        {/* <Avatar size={40} src={imageSource(post.postedBy)} /> */}
+                        <span className="py-2 mx-1">{post.postedBy.name}</span>
+                        <span className="py-2 mx-1 text-muted">
+                          {moment(post.createdAt).fromNow()}
+                        </span>
+                      </div>
 
-                    <div className="col-md-4">
-                      <img
-                        src={post.image && post.image.url}
-                        width="400"
-                        height="250"
-                        className="card-img-top"
-                        alt={post.postedBy.name}
-                      />
-                    </div>
+                      <div className="col-md-4">
+                        <img
+                          src={post.image && post.image.url}
+                          width="400"
+                          height="250"
+                          className="card-img-top"
+                          alt={post.postedBy.name}
+                        />
+                      </div>
 
-                    <div className="col-md-8">
-                      <div className="card-body">
-                        <h5 className="card-title">{post.title}</h5>
-                        <p className="card-text">{renderHTML(post.content)}</p>
+                      <div className="col-md-8">
+                        <div className="card-body">
+                          <h5 className="card-title">{post.title}</h5>
+                          <p className="card-text">
+                            {renderHTML(post.content)}
+                          </p>
+                         
+                        
+                            <div>
+                              <button
+                                onClick={() => handleFormModel(post)}
+                                className=" btn btn-primary"
+                                
+                              >
+                                APPLY
+                              </button>
+                            </div>
+                         
+                      
 
-                        {post.emails.map((e) =>
-                          e.postedBy === state.user._id ? (
+                          {/* {post.emails.map((e) =>
+                            state &&
+                            state.user &&
+                            e.postedBy &&
+                            e.postedBy.includes(state.user._id) && (
+                              <a
+                                onClick={() => handleFormModel(post)}
+                                className="btn btn-sm btn-primary"
+                                
+                              >
+                                Unfollow
+                              </a>
+                            ) 
+                          )
+                        }
+                        {post.emails.map((a) => 
+                         state &&
+                         state.user &&
+                         a.email &&
+                         a.email === state.user.email && (
+                          <a
+                          onClick={() => handleFormModel(post)}
+                          className="btn btn-sm btn-primary"
+                        >
+                          Follow
+                        </a>
+                         )
+                            
+                            )
+                        } */}
+
+                          {/* { post.emails.map((e)=>
+                   state &&
+                   state.user &&
+                   e.postedBy &&
+                   e.postedBy.includes(state.user._id) ? (
+                     <a
+                       onClick={() => handleFormModel(post)}
+                       className="btn btn-sm btn-primary"
+                     >
+                       APPLY
+                     </a>
+                   ) : (
+                     <a
+                       onClick={() =>handleFormModel(post)}
+                       className="btn btn-sm btn-primary"
+                     >
+                       APPLIED
+                     </a>
+                   )
+                  
+                  )
+                  
+                 } */}
+
+                          {/* {post.emails.map((e) =>
+                          e.postedBy === state.user._id && (
                             <div>
                               <button
                                 onClick={() => handleFormModel(post)}
@@ -138,25 +212,13 @@ const Admin = () => {
                                 APPLIED
                               </button>
                             </div>
-                          ) : (
-                            post.title && (
-                              <div>
-                                <button
-                                  onClick={() => handleFormModel(post)}
-                                  className=" btn btn-primary"
-                                  disabled
-                                >
-                                  APPLY
-                                </button>
-                              </div>
-                            )
-                          )
-                        )}
+                          ) 
+                        )} */}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
             <Modal
               title="Apply Form "
               visible={visible}
@@ -179,7 +241,7 @@ const Admin = () => {
             </Modal>
           </div>
         </div>
-        <pre>{JSON.stringify(posts, null, 3)}</pre>
+        {/* <pre>{JSON.stringify(posts, null, 3)}</pre> */}
       </div>
     </UserRoute>
   );
