@@ -35,7 +35,7 @@ const Login = () => {
         });
         //save in local storage
         window.localStorage.setItem("auth",JSON.stringify(data)) 
-        router.push(`/${state.user.role === 'Recuirter' ? 'admin' : 'user'}/dashboard`)
+        router.push(`/${state && state.token && state.user.role === 'Recuirter' ? 'admin' : 'user'}/dashboard`)
 
         
       }
@@ -44,8 +44,10 @@ const Login = () => {
       setloading(false);
     }
   };
-  if (state && state.user.role == 'Recuirter') router.push("/admin/dashboard")
-  if (state && state.user.role == 'Candidate') router.push("/user/dashboard");
+  // if (state && state.user.role == 'Recuirter') router.push("/admin/dashboard")
+  
+
+  // if (state && state.user.role == 'Candidate') router.push("/user/dashboard");
   
   return (
     <div className="container-fluid">

@@ -88,7 +88,7 @@ const Admin = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="form-control"
-            placeholder="Search by Jobs ..."
+            placeholder="Search your Jobs ..."
             aria-label="Recipient's name"
             aria-describedby="basic-addon2"
           />
@@ -132,88 +132,15 @@ const Admin = () => {
                           <p className="card-text">
                             {renderHTML(post.content)}
                           </p>
-                         
-                        
-                            <div>
-                              <button
-                                onClick={() => handleFormModel(post)}
-                                className=" btn btn-primary"
-                                
-                              >
-                                APPLY
-                              </button>
-                            </div>
-                         
-                      
 
-                          {/* {post.emails.map((e) =>
-                            state &&
-                            state.user &&
-                            e.postedBy &&
-                            e.postedBy.includes(state.user._id) && (
-                              <a
-                                onClick={() => handleFormModel(post)}
-                                className="btn btn-sm btn-primary"
-                                
-                              >
-                                Unfollow
-                              </a>
-                            ) 
-                          )
-                        }
-                        {post.emails.map((a) => 
-                         state &&
-                         state.user &&
-                         a.email &&
-                         a.email === state.user.email && (
-                          <a
-                          onClick={() => handleFormModel(post)}
-                          className="btn btn-sm btn-primary"
-                        >
-                          Follow
-                        </a>
-                         )
-                            
-                            )
-                        } */}
-
-                          {/* { post.emails.map((e)=>
-                   state &&
-                   state.user &&
-                   e.postedBy &&
-                   e.postedBy.includes(state.user._id) ? (
-                     <a
-                       onClick={() => handleFormModel(post)}
-                       className="btn btn-sm btn-primary"
-                     >
-                       APPLY
-                     </a>
-                   ) : (
-                     <a
-                       onClick={() =>handleFormModel(post)}
-                       className="btn btn-sm btn-primary"
-                     >
-                       APPLIED
-                     </a>
-                   )
-                  
-                  )
-                  
-                 } */}
-
-                          {/* {post.emails.map((e) =>
-                          e.postedBy === state.user._id && (
-                            <div>
-                              <button
-                                onClick={() => handleFormModel(post)}
-                                className=" btn btn-primary"
-                                disabled
-                              >
-                                APPLIED
-                              </button>
-                            </div>
-                          ) 
-                        )} */}
+                          <div>
+                            <button
+                              onClick={() => handleFormModel(post)}
+                              className=" btn btn-primary"
+                            >
+                              APPLY
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
