@@ -30,9 +30,7 @@ const PostList = ({ posts, handleDelete }) => {
                   <div className="col-md-4">
                     <img
                       src={post.image && post.image.url}
-                      width="400"
-                      height="250"
-                      className="card-img-top"
+                       className="img-fluid h-100 rounded-start"
                       alt={post.postedBy.name}
                     />
                   </div>
