@@ -35,7 +35,7 @@ const Login = () => {
         });
         //save in local storage
         window.localStorage.setItem("auth",JSON.stringify(data)) 
-        router.push(`/${state && state.user.role == 'Recuirter' ? 'admin' : 'user'}/dashboard`)
+        router.push(`/${state && state.user.role == 'Recruiter' ? 'admin' : 'user'}/dashboard`)
 
         
       }
@@ -44,7 +44,7 @@ const Login = () => {
       setloading(false);
     }
   };
-  if (state && state.user.role == 'Recuirter') {
+  if (state && state.user.role == 'Recruiter') {
     router.push("/admin/dashboard")
   }else if (state && state.user.role == 'Candidate') {
     router.push("/user/dashboard")
