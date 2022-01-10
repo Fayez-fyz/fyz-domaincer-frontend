@@ -6,10 +6,17 @@ import { UserContext } from "../context";
 export default function Home() {
   const [state, setState] = useContext(UserContext);
   const router = useRouter();
-  if (state && state.token && state.role == 'Recuirter') {
-    router.push("/admin/dashboard")
-  }else if (state && state.token && state.role == 'Candidate') 
-  {router.push("/user/dashboard")}
+//   if (state && state.token && state.user.role == 'Recruiter') {
+//     router.push("/admin/dashboard")
+//   }else if (state && state.token && state.user.role == 'Candidate') 
+//   {
+//     router.push("/user/dashboard")
+// }
+if (state && state.user && state.user.role == "Candidate") {
+  router.push("/user/dashboard");
+} else if (state && state.user && state.user.role == "Recruiter") {
+  router.push("/admin/dashboard");
+}
   
   return (
     <div>

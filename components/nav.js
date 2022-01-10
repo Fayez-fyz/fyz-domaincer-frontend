@@ -54,7 +54,7 @@ const Nav = () => {
                 className="dropdown-menu col-1 position-absolute dropdown-menu-dark dropdown-menu-end"
                 aria-labelledby="navbarDarkDropdownMenuLink"
               >
-             {state.user.role === 'Recuirter' && (
+             {state.user.role === 'Recruiter' && (
                   <li>
                   <Link href="/admin/dashboard">
                     <a
@@ -96,7 +96,7 @@ const Nav = () => {
                   </Link>
                 </li>
              )}
-                {state.user.role === 'Recuirter' &&(
+                {state.user.role === 'Recruiter' &&(
                      <li>
                      <Link href="/admin/candidate">
                          <a

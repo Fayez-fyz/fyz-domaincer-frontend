@@ -34,25 +34,20 @@ const Login = () => {
           token: data.token,
         });
         //save in local storage
-        window.localStorage.setItem("auth",JSON.stringify(data)) 
-        // router.push(`/${state && state.user.role == 'Recruiter' ? 'admin' : 'user'}/dashboard`)
-
-        
+        window.localStorage.setItem("auth", JSON.stringify(data));
       }
     } catch (error) {
       toast.error(error);
       setloading(false);
     }
   };
-  if (state && state.user.role == 'Recruiter') {
-    router.push("/admin/dashboard")
-  }else if (state && state.user.role == 'Candidate') {
-    router.push("/user/dashboard")
-  }
-      
 
- 
-  
+  if (state && state.user && state.user.role == "Candidate") {
+    router.push("/user/dashboard");
+  } else if (state && state.user && state.user.role == "Recruiter") {
+    router.push("/admin/dashboard");
+  }
+
   return (
     <div className="container-fluid">
       <div className="row py-5">
@@ -97,6 +92,7 @@ const Login = () => {
           </Card>
         </div>
       </div>
+      {/* <pre>{JSON.stringify(state.user.role,null,5)}</pre> */}
     </div>
   );
 };
